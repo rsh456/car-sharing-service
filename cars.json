@@ -1,11 +1,88 @@
 [
-    {"id": 1, "size": "s", "fuel": "gasoline", "doors": 3, "transmission": "auto"},
-    {"id": 2, "size": "s", "fuel": "electric", "doors": 3, "transmission": "auto"},
-    {"id": 3, "size": "s", "fuel": "gasoline", "doors": 5, "transmission": "manual"},
-    {"id": 4, "size": "m", "fuel": "electric", "doors": 3, "transmission": "auto"},
-    {"id": 5, "size": "m", "fuel": "hybrid", "doors": 5, "transmission": "auto"},
-    {"id": 6, "size": "m", "fuel": "gasoline", "doors": 5, "transmission": "manual"},
-    {"id": 7, "size": "l", "fuel": "diesel", "doors": 5, "transmission": "manual"},
-    {"id": 8, "size": "l", "fuel": "electric", "doors": 5, "transmission": "auto"},
-    {"id": 9, "size": "l", "fuel": "hybrid", "doors": 5, "transmission": "auto"}
+    {
+        "size": "s",
+        "fuel": "gasoline",
+        "doors": 3,
+        "transmission": "auto",
+        "id": 1,
+        "trips": [
+            {
+                "start": 1,
+                "end": 2,
+                "description": "new trip"
+            }
+        ]
+    },
+    {
+        "size": "s",
+        "fuel": "electric",
+        "doors": 3,
+        "transmission": "auto",
+        "id": 2,
+        "trips": []
+    },
+    {
+        "size": "s",
+        "fuel": "gasoline",
+        "doors": 5,
+        "transmission": "manual",
+        "id": 3,
+        "trips": []
+    },
+    {
+        "size": "m",
+        "fuel": "electric",
+        "doors": 3,
+        "transmission": "auto",
+        "id": 4,
+        "trips": []
+    },
+    {
+        "size": "m",
+        "fuel": "gasoline",
+        "doors": 5,
+        "transmission": "manual",
+        "id": 6,
+        "trips": []
+    },
+    {
+        "size": "l",
+        "fuel": "diesel",
+        "doors": 5,
+        "transmission": "manual",
+        "id": 7,
+        "trips": []
+    },
+    {
+        "size": "l",
+        "fuel": "electric",
+        "doors": 5,
+        "transmission": "auto",
+        "id": 8,
+        "trips": []
+    },
+    {
+        "size": "l",
+        "fuel": "hybrid",
+        "doors": 5,
+        "transmission": "auto",
+        "id": 9,
+        "trips": []
+    },
+    {
+        "size": "xl",
+        "fuel": "electric",
+        "doors": 3,
+        "transmission": "auto",
+        "id": 10,
+        "trips": []
+    },
+    {
+        "size": "s",
+        "fuel": "hybrid",
+        "doors": 2,
+        "transmission": "auto",
+        "id": 11,
+        "trips": []
+    }
 ]
