@@ -1,9 +1,10 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 import uvicorn
 from schemas import load_db, CarInput, CarOutput, save_db, TripInput, TripOutput, Car
 from sqlalchemy import create_engine
 from sqlmodel import SQLModel, Session, select
 from contextlib import asynccontextmanager
+from typing import Annotated
 
 engine = create_engine("sqlite:///carsharing.db",
         connect_args={"check_same_thread":False}, # Needed for SQLite to work with multiple threads
@@ -17,14 +18,21 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Car sharing", lifespan=lifespan)
 db = load_db()
 
+## Define a method to return the session
+def get_session():
+    with Session(engine) as session:
+        yield session
+
+
 @app.get("/")
 async def welcome(name):
     return {"message": "Welcome, {name} to the Car Sharing service!"}
 
 @app.get("/api/cars")
 # Python3.5 now supports type hints
-def get_cars(size:str|None = None, doors:int|None = None)-> list:
-    with Session(engine) as session:
+# Python 3.9+ supports annotated, a type hint that allows you to add metadata to a type
+def get_cars(session: Annotated[Session, Depends(get_session)],
+             size:str|None = None, doors:int|None = None)-> list:
         query = select(Car)
         if size:
             query = query.where(Car.size == size)
@@ -41,8 +49,8 @@ def car_by_id(id: int) :
         raise HTTPException(status_code=404, detail=f"Car not found with id ={id}")
 
 @app.post("/api/cars")
-def add_car(car_input: CarInput)-> Car:
-    with Session(engine) as session:
+def add_car(session: Annotated[Session, Depends(get_session)],
+            car_input: CarInput)-> Car:
         new_car = Car.model_validate(car_input)
         session.add(new_car)
         session.commit()
