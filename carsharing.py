@@ -8,7 +8,7 @@ from typing import Annotated
 
 engine = create_engine("sqlite:///carsharing.db",
         connect_args={"check_same_thread":False}, # Needed for SQLite to work with multiple threads
-        echo=True,)
+        echo=True,) # Remove this in production
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

@@ -16,7 +16,7 @@ class Trip(TripInput, table=True):
     id: int |None = Field(default=None, primary_key=True)
     car_id : int = Field(foreign_key="car.id")
 
-    car: "Car" = Relationship(back_populates="trips")
+    car: "Car" = Relationship(back_populates="trips") # Car is not implemented yet, so we use a string to avoid circular import issues
 
 class CarInput(SQLModel):
     size: str
