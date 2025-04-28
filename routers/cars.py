@@ -4,7 +4,6 @@ from sqlmodel import Session, select
 from typing import Annotated
 from typing import Annotated
 from db import get_session
-from carsharing import app
 
 # Routers are useful for grouping related endpoints together, making it easier to maintain and understand the codebase.
 router = APIRouter(prefix="/api/cars")
