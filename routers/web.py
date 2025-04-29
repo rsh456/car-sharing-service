@@ -1,5 +1,5 @@
 from typing import Annotated
-from fastapi import APIRouter, Form, Request, Depends
+from fastapi import APIRouter, Form, Request, Depends, Cookie
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
@@ -11,7 +11,9 @@ router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
 @router.get("/", response_class=HTMLResponse)
-def home(request: Request):
+
+# The cookie is set in the middleware, but we can also access it here if needed
+def home(request: Request, cars_cookie: Annotated[str | None, Cookie()]):
     return templates.TemplateResponse("home.html", {"request": request})
 
 
