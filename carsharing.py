@@ -3,7 +3,8 @@ from fastapi.responses import JSONResponse
 import uvicorn
 from sqlmodel import SQLModel
 from contextlib import asynccontextmanager
-from routers import cars, web, BadtripException
+from routers import cars, web
+from routers.cars import BadtripException
 from db import engine
 
 @asynccontextmanager
