@@ -1,5 +1,10 @@
-To run the application in development mode
-fastapi dev carsharing.py
+Running the application:
+- In development mode
+```fastapi dev carsharing.py```
 
-in production env
-fastapi run carsharing.py
+- In production env
+```fastapi run carsharing.py```
+
+Dependencies:
+Used bcrypt to support hashing
+``` pip install "passlib[bcrypt]"
