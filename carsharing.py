@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from sqlmodel import SQLModel
 from contextlib import asynccontextmanager
-from routers import cars, web
+from routers import cars, web, auth
 from routers.cars import BadtripException
 from db import engine
 
@@ -16,6 +16,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Car sharing", lifespan=lifespan)
 app.include_router(cars.router)
 app.include_router(web.router)
+app.include_router(auth.router)
 
 origins = [
     "http://localhost:8000",

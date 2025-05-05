@@ -20,7 +20,7 @@ class User(SQLModel, table = True):
     password_hash: str =""
 
     def set_password(self, password: str):
-        self.password_hash = password
+        self.password_hash = pwd_context.hash(password)
 
     def verify_password(self, password: str):
         return pwd_context.verify(password, self.password_hash)

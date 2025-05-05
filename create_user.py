@@ -18,8 +18,7 @@ if __name__ == "__main__":
     username = input("Please enter username")
     password = getpass("Please enter password")
     with Session(engine) as session:
-        user = User(username=username, password=password)
+        user = User(username=username)
+        user.set_password(password)
         session.add(user)
         session.commit()
-        session.refresh(user)  # Updates the user object with the new id
-        print(f"User {user.username} created with id {user.id}")
