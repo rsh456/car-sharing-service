@@ -1,5 +1,6 @@
 from fastapi import HTTPException, Depends, APIRouter
-from schemas import CarInput, CarOutput, Trip, TripInput, TripOutput, Car
+from routers.auth import get_current_user
+from schemas import CarInput, CarOutput, Trip, TripInput, TripOutput, Car, User
 from sqlmodel import Session, select
 from typing import Annotated
 from typing import Annotated
@@ -31,6 +32,7 @@ def car_by_id(session: Annotated[Session, Depends(get_session)], id: int)->CarOu
 
 @router.post("/")
 def add_car(session: Annotated[Session, Depends(get_session)],
+            user: Annotated[User, Depends(get_current_user)],
             car_input: CarInput)-> Car:
         new_car = Car.model_validate(car_input)
         session.add(new_car)

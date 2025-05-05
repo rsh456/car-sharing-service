@@ -14,6 +14,7 @@ templates = Jinja2Templates(directory="templates")
 
 # The cookie is set in the middleware, but we can also access it here if needed
 def home(request: Request, cars_cookie: Annotated[str | None, Cookie()]):
+    print(cars_cookie)
     return templates.TemplateResponse("home.html", {"request": request})
 
 
