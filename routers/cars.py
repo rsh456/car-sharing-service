@@ -15,7 +15,6 @@ router = APIRouter(prefix="/api/cars")
 # Python 3.9+ supports annotated, a type hint that allows you to add metadata to a type
 def get_cars(session: Annotated[Session, Depends(get_session)],
              size:str|None = None, doors:int|None = None)-> list:
-        print("testing this")
         query = select(Car)
         if size:
             query = query.where(Car.size == size)
