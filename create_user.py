@@ -2,13 +2,10 @@ import logging
 """
 This script is used to create a new user in the car-sharing application database.
 It performs the following tasks:
-1. Connects to the SQLite database using SQLModel and creates the necessary tables if they do not exist.
+1. Connects to the SQLite db using SQLModel and creates the tables if they do not exist.
 2. Prompts the user to input a username and password securely.
 3. Creates a new user instance with the provided username and hashed password.
 4. Adds the new user to the database and commits the transaction.
-Note:
-- Ensure that the `User` schema in the `schemas` module includes a `set_password` method to hash the password.
-- The SQLite database file is named `carsharing.db` and is located in the same directory as this script.
 """
 from getpass import getpass
 from sqlmodel import SQLModel, Session, create_engine
