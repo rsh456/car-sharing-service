@@ -1,5 +1,6 @@
 '''
-This module contains the routes for the web application, including the home page and search functionality.
+This module contains the routes for the web application, 
+including the home page and search functionality.
 '''
 
 from typing import Annotated, Union
@@ -17,8 +18,7 @@ templates = Jinja2Templates(directory="templates")
 @router.get("/", response_class=HTMLResponse)
 
 # The cookie is set in the middleware, but we can also access it here if needed
-def home(request: Request, 
-         cars_cookie: Annotated[Union[str, None], Cookie()] = None):
+def home(request: Request, cars_cookie: Annotated[Union[str, None], Cookie()] = None):
     '''
     This function handles the home page of the web application.
     It uses Jinja2 templates to render the HTML page.

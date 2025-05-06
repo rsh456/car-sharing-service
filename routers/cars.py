@@ -4,9 +4,9 @@ It includes endpoints for getting, adding, updating, and deleting cars and trips
 '''
 from typing import Annotated, Union
 from fastapi import HTTPException, Depends, APIRouter
+from sqlmodel import Session, select
 from routers.auth import get_current_user
 from schemas import CarInput, CarOutput, Trip, TripInput, TripOutput, Car, User
-from sqlmodel import Session, select
 from db import get_session
 
 # Routers are useful for grouping related endpoints together, making it easier to maintain and understand the codebase.
