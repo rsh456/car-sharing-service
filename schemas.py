@@ -1,4 +1,9 @@
+'''
+This module contains the schemas for the API.
+It defines the data models used for user authentication, car information, and trip details.
+'''
 import json
+from typing import Union
 from pydantic import BaseModel
 # By creating a class that inherits from BaseModel and listing fields, we get a dunder init method
 from sqlmodel import Relationship, SQLModel, Field, Relationship, Column, VARCHAR
@@ -12,7 +17,7 @@ class UserOutput(SQLModel):
     username: str
 
 class User(SQLModel, table = True):
-    id: int | None= Field(default=None, primary_key=True)
+    id:Union[int, None] = Field(default=None, primary_key=True)
     
     # Add a constrait to prevent duplicate usernames 
     # and a unique index to speed up queries

@@ -1,12 +1,13 @@
+from contextlib import asynccontextmanager
+from db import engine
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from sqlmodel import SQLModel
-from contextlib import asynccontextmanager
 from routers import cars, web, auth
 from routers.cars import BadtripException
-from db import engine
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -28,7 +29,7 @@ app.add_middleware(
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"], 
+    allow_headers=["*"],
 )
 
 @app.exception_handler(BadtripException)
